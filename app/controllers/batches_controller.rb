@@ -26,6 +26,8 @@ class BatchesController < ApplicationController
 
     batch.save
 
-    redirect_to batch
+    respond_to do |format|
+      format.json { render nothing: true }
+    end
   end
 end
