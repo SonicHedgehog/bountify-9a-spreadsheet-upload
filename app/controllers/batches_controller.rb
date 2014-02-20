@@ -11,7 +11,15 @@ class BatchesController < ApplicationController
     batch.description = params[:file].original_filename
     batch.assembly = params[:assembly]
 
-    spreadsheet = Roo::CSV.new(params[:file].path)
+    spreadsheet = nil
+
+    case File.extname(params[:file].original_filename)
+      when '.csv' then spreadsheet = Roo::CSV.new(params[:file].path)
+      when '.xls' then spreadsheet = Roo::Excel.new(params[:file].path)
+      when '.xlsx' then spreadsheet = Roo::Excelx.new(params[:file].path)
+      else raise "Unknown file type: #{file.original_filename}"
+    end
+
     spreadsheet_header = spreadsheet.row(1)
 
     (2..spreadsheet.last_row).each do |i|
