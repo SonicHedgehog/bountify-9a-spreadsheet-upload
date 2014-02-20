@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140220163621) do
+ActiveRecord::Schema.define(version: 20140220165932) do
+
+  create_table "batch_details", force: true do |t|
+    t.integer "batch_id"
+    t.string  "chrom"
+    t.integer "chrom_start"
+    t.integer "chrom_end"
+  end
+
+  add_index "batch_details", ["batch_id"], name: "index_batch_details_on_batch_id"
 
   create_table "batches", force: true do |t|
     t.string   "status"
