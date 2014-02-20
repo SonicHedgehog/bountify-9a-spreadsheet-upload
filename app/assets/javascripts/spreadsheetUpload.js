@@ -11,7 +11,7 @@ angular.module('spreadsheetUpload', ['angularFileUpload'])
 
     $scope.submitForm = function() {
       $scope.upload = $upload.upload({
-        url: '/batches',
+        url: '/batches.json',
         data: {assembly: $scope.assembly},
         file: file
       })
