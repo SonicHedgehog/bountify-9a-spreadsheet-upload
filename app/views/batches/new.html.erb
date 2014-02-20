@@ -1,0 +1,19 @@
+<div class="panel-group" id="accordion1">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion1" href="#collapseOne">
+            Spreadsheet Upload
+          </a>
+        </h4>
+    </div>
+    <div id="collapseOne" class="panel-collapse collapse">
+      <div class="panel-body">
+          <%= form_tag batches_path, multipart: true do %>
+            <%= file_field_tag :file, multiple: true %>
+            <%= submit_tag "Import", :class => 'btn btn-small btn-info pull-right' %>
+          <% end %>
+      </div>
+    </div>
+  </div>
+</div>
