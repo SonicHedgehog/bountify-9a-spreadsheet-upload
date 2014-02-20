@@ -8,10 +8,10 @@ class BatchesController < ApplicationController
   def create
     batch = Batch.new
 
-    batch.description = params[:batch][:spreadsheet].original_filename
-    batch.assembly = params[:batch][:assembly]
+    batch.description = params[:file].original_filename
+    batch.assembly = params[:assembly]
 
-    spreadsheet = Roo::CSV.new(params[:batch][:spreadsheet].path)
+    spreadsheet = Roo::CSV.new(params[:file].path)
     spreadsheet_header = spreadsheet.row(1)
 
     (2..spreadsheet.last_row).each do |i|
