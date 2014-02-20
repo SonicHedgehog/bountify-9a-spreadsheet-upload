@@ -9,7 +9,7 @@
     </div>
     <div id="collapseOne" class="panel-collapse collapse">
       <div class="panel-body">
-        <%= form_for :batch do |f| %>
+        <%= form_for @batch do |f| %>
           <%= f.label :assembly %>
           <%= f.text_field :assembly %>
           <%= f.file_field :spreadsheet %>
