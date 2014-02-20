@@ -3,15 +3,17 @@ angular.module('spreadsheetUpload', ['angularFileUpload'])
     $httpProvider.defaults.headers.common['X-CSRF-Token'] = $('meta[name=csrf-token]').attr('content')
   }])
   .controller('UploadCtrl', ['$scope', '$upload', function($scope, $upload) {
-    $scope.onFileSelect = function($files) {
-      for(var i = 0; i < $files.length; i++) {
-        var file = $files[i]
+    var file;
 
-        $scope.upload = $upload.upload({
-          url: '/batches',
-          data: {assembly: $scope.assembly},
-          file: file
-        })
-      }
+    $scope.onFileSelect = function($files) {
+      file = $files[0]
+    }
+
+    $scope.submitForm = function() {
+      $scope.upload = $upload.upload({
+        url: '/batches',
+        data: {assembly: $scope.assembly},
+        file: file
+      })
     }
   }])
