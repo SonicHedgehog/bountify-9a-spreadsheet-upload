@@ -9,10 +9,12 @@
     </div>
     <div id="collapseOne" class="panel-collapse collapse">
       <div class="panel-body">
-          <%= form_tag batches_path, multipart: true do %>
-            <%= file_field_tag :file, multiple: true %>
-            <%= submit_tag "Import", :class => 'btn btn-small btn-info pull-right' %>
-          <% end %>
+        <%= form_for :batch do |f| %>
+          <%= f.label :assembly %>
+          <%= f.text_field :assembly %>
+          <%= f.file_field :spreadsheet %>
+          <%= f.submit "Import", :class => 'btn btn-small btn-info pull-right' %>
+        <% end %>
       </div>
     </div>
   </div>
