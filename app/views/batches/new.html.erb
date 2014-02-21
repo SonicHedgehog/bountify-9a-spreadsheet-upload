@@ -14,6 +14,7 @@
           <input type="text" name="assembly" ng-model="assembly" />
           <input type="file" name="spreadsheet" ng-file-select="onFileSelect($files)" />
           <input type="submit" value="Import" class="btn btn-small btn-info pull-right" />
+          <p ng-show="uploaded">Success! <a ng-href="/batches/{{batchID}}">Show batch</a></p>
         </form>
       </div>
     </div>

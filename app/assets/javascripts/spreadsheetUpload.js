@@ -16,6 +16,9 @@ angular.module('spreadsheetUpload', ['angularFileUpload'])
         file: file
       }).success(function(data, status, headers, config) {
         $scope.resetForm()
+
+        $scope.batchID = data.id
+        $scope.uploaded = true
       })
     }
   }])
