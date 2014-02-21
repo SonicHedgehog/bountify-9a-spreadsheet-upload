@@ -14,6 +14,18 @@ angular.module('spreadsheetUpload', ['angularFileUpload'])
         url: '/batches.json',
         data: {assembly: $scope.assembly},
         file: file
+      }).success(function(data, status, headers, config) {
+        $scope.resetForm()
       })
     }
   }])
+  .directive('resetForm', function() {
+    return {
+      link: function(scope, element, attrs) {
+        scope[attrs.resetForm] = function() {
+          scope[attrs.name].$setPristine()
+          element[0].reset()
+        }
+      }
+    }
+  })

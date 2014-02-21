@@ -9,7 +9,7 @@
     </div>
     <div id="collapseOne" class="panel-collapse collapse">
       <div class="panel-body">
-        <form ng-submit="submitForm()" ng-controller="UploadCtrl" enctype="multipart/form-data">
+        <form name="uploadForm" reset-form="resetForm" ng-submit="submitForm()" ng-controller="UploadCtrl" enctype="multipart/form-data">
           <label for="assembly">Assembly</label>
           <input type="text" name="assembly" ng-model="assembly" />
           <input type="file" name="spreadsheet" ng-file-select="onFileSelect($files)" />
