@@ -35,7 +35,7 @@ class BatchesController < ApplicationController
     batch.save
 
     respond_to do |format|
-      format.json { render nothing: true }
+      format.json { render json: {:id => batch.id} }
     end
   end
 end
