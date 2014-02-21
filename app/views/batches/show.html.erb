@@ -1,0 +1,24 @@
+<p>
+  <strong>Assembly:</strong>
+  <%= @batch.assembly %>
+</p>
+ 
+<p>
+  <strong>Description:</strong>
+  <%= @batch.description %>
+</p>
+
+<table border="1">
+  <tr>
+    <th>chrom</th>
+    <th>chrom_start</th>
+    <th>chrom_end</th>
+  </tr>
+  <% @batch.batch_details.each do |batch_detail|%>
+   <tr>
+      <td><%= batch_detail.chrom %></td>     
+      <td><%= batch_detail.chrom_start %></td>
+      <td><%= batch_detail.chrom_end %></td>
+   </tr>
+   <% end %>
+</table>

@@ -38,4 +38,8 @@ class BatchesController < ApplicationController
       format.json { render json: {:id => batch.id} }
     end
   end
+
+  def show
+    @batch = Batch.find(params[:id])
+  end
 end
