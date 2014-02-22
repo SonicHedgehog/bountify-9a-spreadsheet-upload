@@ -26,5 +26,5 @@
      <% end %>
   </table>
 
-  <p><a ng-href="<%= url_for controller: 'batches', action: 'download_xlsx' %>/{{selectedURLFormat}}&amp;ext=.xlsx" download>Download batch details</a></p>
+  <p ng-show="selected.length > 0"><a ng-href="<%= url_for controller: 'batches', action: 'download_xlsx' %>/{{selectedURLFormat}}&amp;ext=.xlsx" download>Download batch details</a></p>
 </div>
