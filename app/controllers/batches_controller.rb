@@ -1,4 +1,5 @@
 require 'roo'
+require 'axlsx'
 
 class BatchesController < ApplicationController
   def new
@@ -41,5 +42,28 @@ class BatchesController < ApplicationController
 
   def show
     @batch = Batch.find(params[:id])
+  end
+
+  def download_xlsx
+    Axlsx::Package.new do |p|
+      # Required by Numbers.
+      p.use_shared_strings = true
+
+      p.workbook.add_worksheet(:name => 'Batch Details') do |sheet|
+        sheet.add_row ["chrom", "chrom_start", "chrom_end"]
+
+        params[:id].each do |batch_detail_id|
+          batch_detail = BatchDetail.find(batch_detail_id)
+
+          sheet.add_row [batch_detail.chrom, batch_detail.chrom_start, batch_detail.chrom_end]
+        end
+      end
+
+      batch_id = BatchDetail.find(params[:id][0]).batch_id
+
+      s = p.to_stream()
+
+      send_data s.read, filename: "batch-details-for-batch-##{batch_id}.xlsx", type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+    end
   end
 end
