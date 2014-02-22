@@ -3,7 +3,7 @@ angular.module('spreadsheetUpload', ['angularFileUpload'])
     $httpProvider.defaults.headers.common['X-CSRF-Token'] = $('meta[name=csrf-token]').attr('content')
   }])
   .controller('UploadCtrl', ['$scope', '$upload', function($scope, $upload) {
-    var file;
+    var file
 
     $scope.onFileSelect = function($files) {
       file = $files[0]
