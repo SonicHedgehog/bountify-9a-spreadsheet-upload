@@ -22,6 +22,29 @@ angular.module('spreadsheetUpload', ['angularFileUpload'])
       })
     }
   }])
+  .controller('ShowCtrl', ['$scope', function($scope) {
+    $scope.selected = []
+
+    var updateSelected = function(action, id) {
+      if (action === 'add' && $scope.selected.indexOf(id) === -1) {
+        $scope.selected.push(id)
+      }
+
+      if (action === 'remove' && $scope.selected.indexOf(id) !== -1) {
+        $scope.selected.splice($scope.selected.indexOf(id), 1)
+      }
+    }
+
+    $scope.updateSelection = function(checked, id) {
+      var action = (checked ? 'add' : 'remove')
+
+      updateSelected(action, id)
+    }
+
+    $scope.isSelected = function(id) {
+      return $scope.selected.indexOf(id) >= 0
+    }
+  }])
   .directive('resetForm', function() {
     return {
       link: function(scope, element, attrs) {
