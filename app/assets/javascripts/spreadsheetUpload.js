@@ -33,6 +33,16 @@ angular.module('spreadsheetUpload', ['angularFileUpload'])
       if (action === 'remove' && $scope.selected.indexOf(id) !== -1) {
         $scope.selected.splice($scope.selected.indexOf(id), 1)
       }
+
+      $scope.selectedURLFormat = '?'
+
+      for (var i = 0; i < $scope.selected.length; i++) {
+        $scope.selectedURLFormat += 'id[]=' + $scope.selected[i]
+
+        if(i !== ($scope.selected.length - 1)) {
+          $scope.selectedURLFormat += '&'
+        }
+      }
     }
 
     $scope.updateSelection = function(checked, id) {
