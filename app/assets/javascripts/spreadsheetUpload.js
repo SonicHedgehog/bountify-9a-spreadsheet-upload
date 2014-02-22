@@ -65,3 +65,7 @@ angular.module('spreadsheetUpload', ['angularFileUpload'])
       }
     }
   })
+
+$(document).on('ready page:load', function() {
+  angular.bootstrap(document.body, ['spreadsheetUpload'])
+})
