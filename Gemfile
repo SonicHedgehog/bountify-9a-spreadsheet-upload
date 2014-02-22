@@ -46,3 +46,4 @@ end
 
 gem 'roo'
 gem 'angularjs-rails'
+gem 'axlsx'
