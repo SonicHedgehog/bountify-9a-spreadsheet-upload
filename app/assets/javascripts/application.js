@@ -14,4 +14,9 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require angular
-//= require_tree .
+//= require ./angular-file-upload.min.js
+//= require ./spreadsheetUpload-app.js
+//= require ./resetForm-directive.js
+//= require ./UploadCtrl.js
+//= require ./ShowCtrl.js
+//= require_self
